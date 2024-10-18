@@ -10,6 +10,11 @@ include_directories(include)
 
 file(GLOB SOURCE_FILES "src/*.cc" "main.cc")
 
+if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+  message("Setting build type to 'Release' as none was specified.")
+  set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
+endif()
+
 add_executable (SmithWaterman ${SOURCE_FILES})
 
 enable_testing()
